@@ -1,0 +1,25 @@
+{
+  "name": "Library_manager",
+  "version": "1.0.0",
+  "description": "A System For Manage A Library",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadprv/LibraryManager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadprv/LibraryManager/issues"
+  },
+  "homepage": "https://github.com/mohammadprv/LibraryManager#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
+  }
+}
