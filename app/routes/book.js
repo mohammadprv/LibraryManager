@@ -7,6 +7,9 @@ const router = require('express').Router();
 //? Add New Book
 router.post("/add-book", bookController.addBook);
 
+//? Get Books List
+router.get("/get-book-list", bookController.getBookList)
+
 module.exports = {
     bookRoutes: router
 }

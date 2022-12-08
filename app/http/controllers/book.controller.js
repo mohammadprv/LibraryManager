@@ -33,7 +33,15 @@ class bookController {
         }
     }
 
-    getBookList() {}
+    async getBookList(req, res, next) {
+        try {
+            const booksList = await BookModel.find({});
+            if(booksList.length < 1) return res.status(200).json({ status: 200, success: true, message: "No Records In Database" });
+            return res.status(200).json(booksList);
+        } catch (error) {
+            next(error);
+        }
+    }
 
     deleteBook() {}
 
