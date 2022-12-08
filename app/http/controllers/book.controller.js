@@ -43,7 +43,28 @@ class bookController {
         }
     }
 
-    deleteBook() {}
+    async deleteBook(req, res, next) {
+
+        try {
+            const { book_name, delete_count } = req.body;
+        
+            const book = await BookModel.findOne({ book_name });
+            if(!book) return res.json({ status: 200, success: true, message: `${book_name} Does Not Exist.` });
+            let book_count = book.book_count;
+            const remaining_count = book_count - delete_count;
+            if(remaining_count < 0) return res.json({ status: 200, success: false, message: "Delete-Count Must Be Less-Equal Than Book-Count", book_count});
+            if(remaining_count == 0) {
+                const result = await BookModel.deleteOne({ book_name });
+                if(result.deletedCount > 0) return res.status(200).json({ status: 200, success: true, message: `${book_name} Completely Remove.` });
+            }
+            book_count = book_count - delete_count;
+            const result = await BookModel.updateOne({ book_name }, {$set: { book_count }});
+            if(result.modifiedCount > 0) return res.status(200).json({ status: 200, success: false, message: `${delete_count} Numbers Of ${book_name} Were Removed.`, remaining_count: book_count});
+        } catch (error) {
+            next(error)
+        }
+
+    }
 
     updateBook() {}
 

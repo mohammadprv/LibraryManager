@@ -8,7 +8,10 @@ const router = require('express').Router();
 router.post("/add-book", bookController.addBook);
 
 //? Get Books List
-router.get("/get-book-list", bookController.getBookList)
+router.get("/get-book-list", bookController.getBookList);
+
+//? Delete Book
+router.post("/delete-book", bookController.deleteBook);
 
 module.exports = {
     bookRoutes: router
