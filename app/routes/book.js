@@ -13,6 +13,9 @@ router.get("/get-book-list", bookController.getBookList);
 //? Delete Book
 router.post("/delete-book", bookController.deleteBook);
 
+//? Update Book
+router.post("/update-book", bookController.updateBook)
+
 module.exports = {
     bookRoutes: router
 }
